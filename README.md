@@ -52,6 +52,22 @@ A TypeScript web app for preserving family memories, live at `app.echome.family`
 
 **TypeScript · Drizzle ORM · Supabase/Postgres · Railway · Cloudflare R2 · Whisper**
 
+### Recipe Vault — private family recipe app
+A Next.js/Supabase/Vercel app for a real family recipe collection of 200+ recipes, with a household privacy model built on Postgres row-level security and magic-link auth.
+
+- Import pipeline that ingests recipes from URLs (JSON-LD first, HTML heuristics as fallback), DOCX files via `mammoth`, and text PDFs via `pdfjs-dist`, splitting multi-recipe documents into individual candidates
+- Review-before-save flow: imports land as candidates for correction and batch save instead of silently creating records
+- Source images are downloaded into Supabase Storage at save time so recipes don't break when a source CDN disappears
+- Structured nutrition fields (protein, sodium, potassium, phosphorus) for kidney-diet cooking, extracted during import
+- Taxonomy tooling — rename, merge, delete, and unused-tag cleanup — so a growing collection doesn't accumulate duplicate labels
+
+**Next.js · TypeScript · Supabase (RLS, Storage) · Vercel · mammoth · pdfjs-dist**
+
+### Internal tools dashboard
+A browser-hosted dashboard that gives coworkers access to operational Python GUIs without distributing production source or private configuration. Frontend on AWS Amplify, processing and credentials stay server-side behind an API, with employee-readable docs kept in a separate repository from production code.
+
+**AWS Amplify · Python APIs · role-based access · audit logging**
+
 ### Company website rebuild
 Delivered a standalone Next.js site with a CMS-backed content layer, deployed on Vercel, replacing a legacy platform — including the respondent-facing paths that real survey participants land on.
 
@@ -71,7 +87,7 @@ Delivered a standalone Next.js site with a CMS-backed content layer, deployed on
 **Languages:** Python, TypeScript, SQL
 **Data:** pandas, pyreadstat, Postgres, SPSS `.sav`, Qualtrics exports, NHTSA vPIC
 **Web:** Next.js, React, Tailwind, Supabase, Drizzle ORM
-**Infra:** Vercel, Railway, Cloudflare R2, Stripe, GitHub Actions
+**Infra:** Vercel, Railway, AWS Amplify, Cloudflare R2, Stripe, GitHub Actions
 
 ---
 
